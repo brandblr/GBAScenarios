@@ -8,11 +8,11 @@
 
 	function resetHighlight(e) {
 	//When the users hover out of the polygon,the highlight is removed
-		Ward_M.resetStyle(e.target);
+		VillageBase_M.resetStyle(e.target);
 		info.update();
 	}
 
-	function onEachWard(feature,layer) {
+	function onEachVillage(feature,layer) {
 	//Within the map for every feature showing labels
 	
 	
@@ -28,7 +28,7 @@
 	
 	
 	
-	function style_Ward_Transparent(feature) {
+	function style_Village_Transparent(feature) {
 	
 	return {
 	    fillColor: 'white',
@@ -136,7 +136,18 @@
 	
 	}
 	
+	function style_Boundary_Towns(feature) {
 	
+	return {
+	    fillColor: 'black',
+		weight: 2,
+        opacity: 1,
+        color: 'black',
+        dashArray: '1',
+        fillOpacity: 0.2
+		};
+	
+	}
 	
 	function style_Vill(feature) {
 	
@@ -176,8 +187,9 @@
 	var SXLRV_M=L.geoJson(SXLRV, {style: style_Boundary});
 	var SMGP_M=L.geoJson(SMGP, {style: style_Boundary});
 	var SXLGP_M=L.geoJson(SXLGP, {style: style_Boundary});
+	var Towns_M=L.geoJson(town, {style: style_Boundary_Towns});
 	var Vill_M=L.geoJson(Village, {style: style_Vill});
-
+	var VillageBase_M=L.geoJson(Village, {style: style_Village_Transparent,onEachFeature: onEachVillage})
 
 	googlebg = L.tileLayer('http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}',{    maxZoom: 20,    subdomains:['mt0','mt1','mt2','mt3']}).addTo(map);
 
@@ -191,7 +203,7 @@
 
 	// method that we will use to update the control based on feature properties passed
 	info.update = function (props) { 	
-    this._div.innerHTML =  (props ? ' Ward Name: <b>' + props['Ward_Name'] + '</b><br />Ward Number: <b>'+ props['Ward_No']+ '</b><br />Assembly: <b>'+ props['Assembly_C']
+    this._div.innerHTML =  (props ? ' Village Name: <b>' + props['KGISVill_2'] + '</b><br />Gram Panchayat: <b>'+ props['GramPanchayat']+ '</b>'
         : '');
 	};
 	
@@ -233,24 +245,14 @@
 		
 	}
 
-function scswitch() {
-		map.removeLayer(scmap);
-		if (document.getElementById('scbox').value=="2") 
-  {
-      scmap=L.geoJson(c2, {style: style_Scenario_v2}).addTo(map);
-  } 
-  
-		
-		
-		drawbasic();
-	}
+
 
 	function drawbasic() {
-	/*map.removeLayer(Ward_M);*/
+	map.removeLayer(VillageBase_M);
 	
 	
 	
-	/* Ward_M=L.geoJson(BBMPWards, {style: style_Ward_Transparent,onEachFeature: onEachWard}).addTo(map);*/
+	VillageBase_M=L.geoJson(Village, {style: style_Village_Transparent,onEachFeature: onEachVillage}).addTo(map);
 	}
 
 
@@ -336,6 +338,12 @@ if ($('#SMGPbox').is(":checked"))
 	  
   } 
 
+if ($('#Townbox').is(":checked"))
+  {
+	  map.removeLayer(Towns_M);
+      Towns_M=L.geoJson(town, {style: style_Boundary_Towns}).addTo(map);
+	  
+  } 
  
   
   drawbasic();
