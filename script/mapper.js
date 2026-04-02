@@ -110,6 +110,21 @@
 	
 	}
 	
+	function style_Boundary_M_GP(feature) {
+	
+	return {
+	    fillColor: 'white',
+		weight: 3,
+        opacity: 1,
+        color: 'blue',
+        dashArray: '5,7',
+        fillOpacity: 0
+		};
+	
+	}
+
+	
+	
 	function style_Boundary_L(feature) {
 	
 	return {
@@ -131,6 +146,19 @@
         opacity: 1,
         color: 'maroon',
         dashArray: '1',
+        fillOpacity: 0
+		};
+	
+	}
+	
+	function style_Boundary_XL_GP(feature) {
+	
+	return {
+	    fillColor: 'white',
+		weight: 4,
+        opacity: 1,
+        color: 'maroon',
+        dashArray: '5,7',
         fillOpacity: 0
 		};
 	
@@ -334,15 +362,15 @@ if ($('#SXLRVbox').is(":checked"))
 if ($('#SMGPbox').is(":checked"))
   {
 	  map.removeLayer(SMGP_M);
-      SMGP_M=L.geoJson(SMGP, {style: style_Boundary_M}).addTo(map);
+      SMGP_M=L.geoJson(SMGP, {style: style_Boundary_M_GP}).addTo(map);
 	  
   } 
   
   if ($('#SXLGPbox').is(":checked"))
   {
 	  map.removeLayer(SXLGP_M);
-      SXLGP_M=L.geoJson(SXLGP, {style: style_Boundary_XL}).addTo(map);
-	  SXLGP.setStyle({ color: 'red'});
+      SXLGP_M=L.geoJson(SXLGP, {style: style_Boundary_XL_GP}).addTo(map);
+	  
   } 
   
   if ($('#Villbox').is(":checked"))
