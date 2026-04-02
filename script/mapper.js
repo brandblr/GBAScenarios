@@ -149,6 +149,19 @@
 	
 	}
 	
+	function style_Boundary_BDA(feature) {
+	
+	return {
+	    fillColor: 'green',
+		weight: 2,
+        opacity: 1,
+        color: 'green',
+        dashArray: '1',
+        fillOpacity: 0
+		};
+	
+	}
+	
 	function style_Vill(feature) {
 	
 	return {
@@ -187,6 +200,7 @@
 	var SXLRV_M=L.geoJson(SXLRV, {style: style_Boundary});
 	var SMGP_M=L.geoJson(SMGP, {style: style_Boundary});
 	var SXLGP_M=L.geoJson(SXLGP, {style: style_Boundary});
+	var BDA_M=L.geoJson(BDA, {style: style_Boundary_BDA});
 	var Towns_M=L.geoJson(town, {style: style_Boundary_Towns});
 	var Vill_M=L.geoJson(Village, {style: style_Vill});
 	var VillageBase_M=L.geoJson(Village, {style: style_Village_Transparent,onEachFeature: onEachVillage})
@@ -342,6 +356,13 @@ if ($('#Townbox').is(":checked"))
   {
 	  map.removeLayer(Towns_M);
       Towns_M=L.geoJson(town, {style: style_Boundary_Towns}).addTo(map);
+	  
+  } 
+  
+  if ($('#BDAbox').is(":checked"))
+  {
+	  map.removeLayer(BDA_M);
+      BDA_M=L.geoJson(BDA, {style: style_Boundary_BDA}).addTo(map);
 	  
   } 
  
