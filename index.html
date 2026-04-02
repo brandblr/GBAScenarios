@@ -1,0 +1,125 @@
+<html>
+<head>
+<title>
+GBA View
+</title>
+
+
+	
+	<meta charset="utf-8" />
+	
+  	<link href='style/css.css' rel='stylesheet' type='text/css'>
+  	<link href="style/font-awesome.min.css" rel="stylesheet">
+ 	
+	<!-- Leaflet -->
+	<link rel="stylesheet" href="style/leaflet.css" />
+	
+	<link rel="stylesheet" href="style/basics.css" />
+	
+
+	<script> L_PREFER_CANVAS = true;</script>
+	
+	
+	<script src="script/leaflet.js"></script>
+	<script src="script/leaflet.label.js"></script>
+	<script src="script/leaflet-pip.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3n7Dfe0nUZQ9I0dh2uD0S3vc9LIrbb2c"></script>
+	
+	
+
+	<script src="data/geo/BRDistrict.js"></script>
+	<script src="data/geo/BUDistrict.js"></script>
+	<script src="data/geo/CBUA.js"></script>
+	<script src="data/geo/Scenario_L_RevVil.js"></script>
+	<script src="data/geo/Scenario_M_RevVil.js"></script>
+	<script src="data/geo/Scenario_S_RevVil.js"></script>
+	<script src="data/geo/Scenario_XL_RevVil.js"></script>
+	<script src="data/geo/Scenario_M_GP.js"></script>
+	<script src="data/geo/Scenario_XL_GP.js"></script>
+	
+	<script src="data/geo/VillageRaw.js"></script>
+	
+
+
+
+
+
+
+
+	<script src="script/jquery.min.js"></script>
+	<script type="text/javascript" src="script/jsapi.js"></script>
+	
+	
+    <script>
+		MB_ATTR = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+				'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+				'Imagery   <a href="http://mapbox.com">Mapbox</a>';
+		MB_URL = 'http://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png';
+		OSM_URL = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+		OSM_ATTRIB = '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+			
+		
+	</script>
+
+</head>
+<body>
+
+<div id="formsect" style="width: 25%; float: left; line-height: 2%; z-index: 10; position: absolute; margin-left: 1%;margin-top: 1%; box-shadow: 0 0 15px rgba(240,170,0,0.7); border-radius: 5px; opacity: 0.8; background-color: white;" >
+
+<h2> Scenario </h2>
+<br>
+<input type="checkbox" id="BUDbox" name="BUDbox" value="BUDYes" onchange="funcswitch()">
+<label for="BUDbox"> Bengaluru Urban District</label><br>
+
+<input type="checkbox" id="BRDbox" name="BRDbox" value="BRDYes" onchange="funcswitch()">
+<label for="BRDbox"> Bengaluru Rural District</label><br>
+
+<input type="checkbox" id="SSRVbox" name="SSRVbox" value="SSRVYes" onchange="funcswitch()">
+<label for="SSRVbox"> Scenario S (RV) </label><br>
+
+<input type="checkbox" id="SMRVbox" name="SMRVbox" value="SMRVYes" onchange="funcswitch()">
+<label for="SMRVbox"> Scenario M (RV) </label><br>
+
+<input type="checkbox" id="SLRVbox" name="SLRVbox" value="SLRVYes" onchange="funcswitch()">
+<label for="SLRVbox"> Scenario L (RV) </label><br>
+
+<input type="checkbox" id="SXLRVbox" name="SXLRVbox" value="SXLRVYes" onchange="funcswitch()">
+<label for="SXLRVbox"> Scenario XL (RV) </label><br>
+
+<input type="checkbox" id="SMGPbox" name="SMGPbox" value="SMGPYes" onchange="funcswitch()">
+<label for="SMGPbox"> Scenario M (GP) </label><br>
+
+<input type="checkbox" id="SXLGPbox" name="SXLGPbox" value="SXLGPYes" onchange="funcswitch()">
+<label for="SXLGPbox"> Scenario XL (GP) </label><br>
+
+<input type="checkbox" id="CBUAbox" name="CBUAbox" value="CBUAYes" onchange="funcswitch()">
+<label for="CBUAbox"> Contiguous B-Urban Area </label><br>
+
+<input type="checkbox" id="Villbox" name="Villbox" value="VillYes" onchange="funcswitch()">
+<label for="Villbox"> Current Villages </label><br>
+
+<br> <br>
+<br> <br>
+
+
+<p>Background Map<select id="bgbox" class='drop' style="float: right; width: 40%" onchange="bgswitch()">
+<option value="selectany">Choose the Background Map</option>
+'roadmap', 'satellite', 'terrain' and 'hybrid'
+<option value="roadmap">Google Road Map</option>
+<option value="satellite">Google Satellite Map</option>
+<option value="terrain">Google Terrain Map</option>
+<option value="hybrid">Google Hybrid Map</option>
+</select >
+<br>
+</p>
+
+</div>
+<div id="map" class="map" style="height: 100%; width: 100%; float:left; border:1px solid #f0ab00; z-index: 1">
+
+<script src="script/mapper.js"></script>
+
+</div>
+
+</body>
+</html>
+
