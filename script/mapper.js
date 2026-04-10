@@ -26,18 +26,39 @@
 	
 	}
 	
+	function getColor(d) {
 	
+	return d >60? 'red' :
+		   d > 40   ? 'orange' :
+           d > 25  ? 'yellow':
+           d > 5  ? 'green' :
+		   d > -100000 ? 'white':
+		   'grey';
+	}
+	
+	function style_Vill(feature) {
+	
+	return {
+	    fillColor: getColor(feature.properties['PercUrb_U']),
+		weight: 0.7,
+        opacity: 0.7,
+        color: 'white',
+        dashArray: '1',
+        fillOpacity: 0.7
+	
+		};
+	
+	}
 	
 	function style_Village_Transparent(feature) {
 	
 	return {
 	    fillColor: 'white',
-		weight: 0,
-        opacity: 0,
+		weight: 0.5,
+        opacity: 0.5,
         color: 'white',
         dashArray: '1',
         fillOpacity: 0
-	
 		};
 	
 	}
@@ -190,18 +211,7 @@
 	
 	}
 	
-	function style_Vill(feature) {
 	
-	return {
-	    fillColor: 'white',
-		weight: 1,
-        opacity: 1,
-        color: 'white',
-        dashArray: '1',
-        fillOpacity: 0
-		};
-	
-	}
 	
 	
 	
@@ -245,7 +255,7 @@
 
 	// method that we will use to update the control based on feature properties passed
 	info.update = function (props) { 	
-    this._div.innerHTML =  (props ? ' Village Name: <b>' + props['KGISVill_2'] + '</b><br />Gram Panchayat: <b>'+ props['GramPanchayat']+ '</b>'
+    this._div.innerHTML =  (props ? ' Village Name: <b>' + props['TVName'] + '</b><br />Gram Panchayat: <b>'+ props['GramPanchayat']+ '</b><br />Type: <b>' + props['TVType'] +'</b><br /><br />Area (SqKm): <b>' + props['Area_U'] +'</b><br />Percentage Urban: <b>' + props['PercUrb_U'] + '</b><br />' 
         : '');
 	};
 	
