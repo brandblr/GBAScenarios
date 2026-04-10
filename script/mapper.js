@@ -255,7 +255,7 @@
 
 	// method that we will use to update the control based on feature properties passed
 	info.update = function (props) { 	
-    this._div.innerHTML =  (props ? ' Village Name: <b>' + props['TVName'] + '</b><br />Gram Panchayat: <b>'+ props['GramPanchayat']+ '</b><br />Type: <b>' + props['TVType'] +'</b><br /><br />Area (SqKm): <b>' + props['Area_U'] +'</b><br />Percentage Urban: <b>' + props['PercUrb_U'] + '</b><br />' 
+    this._div.innerHTML =  (props ? ' Name: <b>' + props['TVName'] + '</b><br />Gram Panchayat: <b>'+ props['GramPanchayat']+ '</b><br />Type: <b>' + props['TVType'] +'</b><br /><br />Area (SqKm): <b>' + props['Area_U'] +'</b><br />Percentage Urban: <b>' + props['PercUrb_U'] + '</b><br />' 
         : '');
 	};
 	
